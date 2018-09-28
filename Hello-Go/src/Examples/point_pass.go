@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+var (
+	test string // pkg variables can be changed on functions without using pointers
+)
+
 func main() {
 
 	name := "Denis"
@@ -12,6 +16,12 @@ func main() {
 	fmt.Println("\nHi", name, "you are currently watching", course)
 
 	fmt.Println("\nCourse was change to", changeCourse(&course)) // & sends the memory address
+
+	fmt.Println("\nBefore test", test)
+
+	changeTest()
+
+	fmt.Println("After test", test)
 }
 
 func changeCourse(course *string) string { // receives the contents of the var
@@ -19,4 +29,9 @@ func changeCourse(course *string) string { // receives the contents of the var
 	fmt.Println("\nChanging Course to", *course)
 
 	return *course //return the contents
+}
+
+func changeTest() {
+
+	test = "bye"
 }
